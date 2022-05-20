@@ -1,4 +1,4 @@
-package com.mingeon.chap1clip1;
+package com.mingeon;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
