@@ -1,14 +1,21 @@
 package com.mingeon.configuration;
 
+import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.config.TopicConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
+import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaAdmin.NewTopics;
 
 @Configuration
 public class KafkaTopicConfiguration {
+
+    @Bean
+    public AdminClient adminClient(KafkaAdmin kafkaAdmin) {
+        return AdminClient.create(kafkaAdmin.getConfigurationProperties());
+    }
 
     @Bean
     public NewTopic clip2() {
