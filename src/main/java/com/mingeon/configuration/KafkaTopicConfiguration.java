@@ -1,4 +1,4 @@
-package com.mingeon.chap1clip1.configuration;
+package com.mingeon.configuration;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.config.TopicConfig;
