@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class Chap1Clip1Application {
+public class KafkaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Chap1Clip1Application.class, args);
+        SpringApplication.run(KafkaApplication.class, args);
     }
 
     @Bean
