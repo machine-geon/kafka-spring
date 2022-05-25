@@ -1,5 +1,6 @@
 package com.mingeon;
 
+import com.mingeon.model.Animal;
 import com.mingeon.producer.ClipProducer;
 
 import org.springframework.boot.ApplicationRunner;
@@ -16,24 +17,10 @@ public class KafkaApplication {
     }
 
     @Bean
-    public ApplicationRunner runner(ClipProducer clipProducer, KafkaMessageListenerContainer<String, String> kafkaMessageListenerContainer) {
+    public ApplicationRunner runner(ClipProducer clipProducer,
+            KafkaMessageListenerContainer<String, String> kafkaMessageListenerContainer) {
         return args -> {
-            clipProducer.async("clip4", "Hello, clip4 Container.");
-            kafkaMessageListenerContainer.start();
-            Thread.sleep(1000L);
-
-            System.out.println("-- pause --");
-            kafkaMessageListenerContainer.pause();
-            Thread.sleep(5000L);
-
-            clipProducer.async("clip4", "Hello, Secondly clip4 Container.");
-
-            System.out.println("-- resume --");
-            kafkaMessageListenerContainer.resume();
-            Thread.sleep(1000L);
-
-            System.out.println("-- stop--");
-            kafkaMessageListenerContainer.stop();
+            clipProducer.async("clip4-animal", new Animal("puppy", 10));
         };
     }
 }
