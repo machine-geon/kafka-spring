@@ -1,13 +1,11 @@
 package com.mingeon;
 
-import com.mingeon.model.Animal;
-import com.mingeon.producer.ClipProducer;
+import com.mingeon.service.KafkaManager;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.listener.KafkaMessageListenerContainer;
 
 @SpringBootApplication
 public class KafkaApplication {
@@ -17,10 +15,9 @@ public class KafkaApplication {
     }
 
     @Bean
-    public ApplicationRunner runner(ClipProducer clipProducer,
-            KafkaMessageListenerContainer<String, String> kafkaMessageListenerContainer) {
+    public ApplicationRunner runner(KafkaManager KafkaManager) {
         return args -> {
-            clipProducer.async("clip4-animal", new Animal("puppy", 10));
+            KafkaManager.describeTopicConfigs();
         };
     }
 }
